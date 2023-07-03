@@ -46,6 +46,7 @@ public class TelaPrincipal {
 		initialize();
 	}
 
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -113,10 +114,20 @@ public class TelaPrincipal {
 			}
 		});
 		menuLivro.add(menuLocalizar);
+		
+		JMenuItem menuSugereAtualizacao = new JMenuItem("Sugere Atualiza\u00E7\u00E3o");
+		menuSugereAtualizacao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaSugereAtualizacaoLivro tela = new TelaSugereAtualizacaoLivro(); 
+				tela.setVisible(true);
+				desktop.add(tela);
+			}
+		});
+		menuLivro.add(menuSugereAtualizacao);
 	}
 
 	public void setVisible(boolean b) {
-		// TODO Auto-generated method stub
+		this.frmSistemaBiblioteca.setVisible(b);
 		
 	}
 }
