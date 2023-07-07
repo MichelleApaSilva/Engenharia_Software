@@ -45,6 +45,9 @@ public class TelaDevolverCopia extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public TelaDevolverCopia() {
+		setMaximizable(true);
+		setIconifiable(true);
+		setClosable(true);
 		setBounds(100, 100, 616, 367);
 		getContentPane().setLayout(null);
 		

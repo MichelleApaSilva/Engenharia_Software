@@ -44,6 +44,9 @@ public class TelaSugereAtualizacaoLivro extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public TelaSugereAtualizacaoLivro() {
+		setMaximizable(true);
+		setIconifiable(true);
+		setClosable(true);
 		setBounds(100, 100, 608, 463);
 		getContentPane().setLayout(null);
 		

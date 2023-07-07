@@ -124,6 +124,29 @@ public class TelaPrincipal {
 			}
 		});
 		menuLivro.add(menuSugereAtualizacao);
+		
+		JMenuItem mntmDevolverCopia = new JMenuItem("Delvover C\u00F3pia");
+		mntmDevolverCopia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaDevolverCopia tela = new TelaDevolverCopia(); 
+				tela.setVisible(true);
+				desktop.add(tela);
+			}		
+		});
+		menuLivro.add(mntmDevolverCopia);
+		
+		JMenu mnBoleto = new JMenu("Boleto");
+		barraMenu.add(mnBoleto);
+		
+		JMenuItem mntmGerarBoleto = new JMenuItem("Gerar");
+		mntmGerarBoleto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaGeraBoleto tela = new TelaGeraBoleto();
+				tela.setVisible(true);
+				desktop.add(tela);
+			}
+		});
+		mnBoleto.add(mntmGerarBoleto);
 	}
 
 	public void setVisible(boolean b) {

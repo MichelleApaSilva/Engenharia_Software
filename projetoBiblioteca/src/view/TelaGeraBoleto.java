@@ -47,6 +47,9 @@ public class TelaGeraBoleto extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public TelaGeraBoleto() {
+		setMaximizable(true);
+		setIconifiable(true);
+		setClosable(true);
 		setBounds(100, 100, 608, 390);
 		getContentPane().setLayout(null);
 		
