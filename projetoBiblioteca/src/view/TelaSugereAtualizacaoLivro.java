@@ -21,6 +21,8 @@ public class TelaSugereAtualizacaoLivro extends JInternalFrame {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
 
 	/**
 	 * Launch the application.
@@ -42,7 +44,7 @@ public class TelaSugereAtualizacaoLivro extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public TelaSugereAtualizacaoLivro() {
-		setBounds(100, 100, 608, 416);
+		setBounds(100, 100, 608, 463);
 		getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
@@ -66,11 +68,11 @@ public class TelaSugereAtualizacaoLivro extends JInternalFrame {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(null, "Dados exemplar", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBounds(10, 114, 572, 261);
+		panel_1.setBounds(10, 114, 572, 308);
 		getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblNewLabel_2 = new JLabel("CÓDIGO DO EXEMPLAR");
+		JLabel lblNewLabel_2 = new JLabel("NOME DO LIVRO");
 		lblNewLabel_2.setBounds(10, 37, 119, 22);
 		panel_1.add(lblNewLabel_2);
 		
@@ -79,7 +81,7 @@ public class TelaSugereAtualizacaoLivro extends JInternalFrame {
 		textField_1.setBounds(134, 37, 428, 22);
 		panel_1.add(textField_1);
 		
-		JLabel lblNewLabel_2_1 = new JLabel("T�?TULO DO EXEMPLAR");
+		JLabel lblNewLabel_2_1 = new JLabel("AUTOR");
 		lblNewLabel_2_1.setBounds(10, 70, 119, 22);
 		panel_1.add(lblNewLabel_2_1);
 		
@@ -88,7 +90,7 @@ public class TelaSugereAtualizacaoLivro extends JInternalFrame {
 		textField_2.setBounds(134, 70, 428, 22);
 		panel_1.add(textField_2);
 		
-		JLabel lblNewLabel_2_1_1 = new JLabel("NOME DO ALUNO");
+		JLabel lblNewLabel_2_1_1 = new JLabel("ANO DE LANÇAMENTO");
 		lblNewLabel_2_1_1.setBounds(10, 103, 119, 22);
 		panel_1.add(lblNewLabel_2_1_1);
 		
@@ -97,7 +99,7 @@ public class TelaSugereAtualizacaoLivro extends JInternalFrame {
 		textField_3.setBounds(134, 103, 428, 22);
 		panel_1.add(textField_3);
 		
-		JLabel lblNewLabel_2_1_1_1 = new JLabel("SITUAÇÃO");
+		JLabel lblNewLabel_2_1_1_1 = new JLabel("EDIÇÃO");
 		lblNewLabel_2_1_1_1.setBounds(10, 132, 119, 22);
 		panel_1.add(lblNewLabel_2_1_1_1);
 		
@@ -106,7 +108,7 @@ public class TelaSugereAtualizacaoLivro extends JInternalFrame {
 		textField_4.setBounds(134, 132, 428, 22);
 		panel_1.add(textField_4);
 		
-		JLabel lblNewLabel_2_1_1_1_1 = new JLabel("TEMPO EM ATRASO");
+		JLabel lblNewLabel_2_1_1_1_1 = new JLabel("EDITORA");
 		lblNewLabel_2_1_1_1_1.setBounds(10, 165, 119, 22);
 		panel_1.add(lblNewLabel_2_1_1_1_1);
 		
@@ -116,17 +118,35 @@ public class TelaSugereAtualizacaoLivro extends JInternalFrame {
 		panel_1.add(textField_5);
 		
 		JButton btnNewButton_1 = new JButton("CANCELAR");
-		btnNewButton_1.setBounds(166, 215, 133, 23);
+		btnNewButton_1.setBounds(170, 274, 133, 23);
 		panel_1.add(btnNewButton_1);
 		
-		JButton btnNewButton_1_1 = new JButton("DEVOLVER");
-		btnNewButton_1_1.setBounds(350, 215, 133, 23);
+		JButton btnNewButton_1_1 = new JButton("SOLICITAR");
+		btnNewButton_1_1.setBounds(354, 274, 133, 23);
 		panel_1.add(btnNewButton_1_1);
 		
-		JLabel lblNewLabel_1 = new JLabel("DEVOLUÇÕES");
+		JLabel lblNewLabel_2_1_1_1_1_1 = new JLabel("ISBN");
+		lblNewLabel_2_1_1_1_1_1.setBounds(10, 198, 119, 22);
+		panel_1.add(lblNewLabel_2_1_1_1_1_1);
+		
+		textField_6 = new JTextField();
+		textField_6.setColumns(10);
+		textField_6.setBounds(134, 198, 428, 22);
+		panel_1.add(textField_6);
+		
+		JLabel lblNewLabel_2_1_1_1_1_1_1 = new JLabel("OBSERVAÇÃO");
+		lblNewLabel_2_1_1_1_1_1_1.setBounds(10, 231, 119, 22);
+		panel_1.add(lblNewLabel_2_1_1_1_1_1_1);
+		
+		textField_7 = new JTextField();
+		textField_7.setColumns(10);
+		textField_7.setBounds(134, 231, 428, 22);
+		panel_1.add(textField_7);
+		
+		JLabel lblNewLabel_1 = new JLabel("SUGESTÕES DE LIVROS");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1.setBounds(10, 11, 414, 28);
+		lblNewLabel_1.setBounds(10, 11, 572, 28);
 		getContentPane().add(lblNewLabel_1);
 
 	}
