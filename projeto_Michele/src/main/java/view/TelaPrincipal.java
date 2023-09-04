@@ -58,7 +58,7 @@ public class TelaPrincipal {
 		frmSistemaBiblioteca.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frmSistemaBiblioteca.getContentPane().setLayout(null);
 		
-		JDesktopPane desktop = new JDesktopPane();
+		final JDesktopPane desktop = new JDesktopPane();
 		desktop.setBounds(0, 0, 1350, 658);
 		desktop.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		frmSistemaBiblioteca.getContentPane().add(desktop);
