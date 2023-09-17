@@ -1,4 +1,4 @@
-package aplicacao;
+package view;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
