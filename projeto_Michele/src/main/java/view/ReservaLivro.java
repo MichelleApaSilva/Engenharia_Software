@@ -18,7 +18,7 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class CancelamentoEmprestimo extends JInternalFrame {
+public class ReservarLivro extends JInternalFrame {
 	private JTextField textCpf;
 	private JTextField textNomeAluno;
 	private JTextField textCurso;
@@ -49,7 +49,7 @@ public class CancelamentoEmprestimo extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CancelamentoEmprestimo() {
+	public ReservarLivro() {
 		setClosable(true);
 		setMaximizable(true);
 		setIconifiable(true);
