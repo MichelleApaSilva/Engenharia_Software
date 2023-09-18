@@ -10,8 +10,8 @@
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.jdbc.Driver" />
 				<!-- inserir o mesmo hostname e senha-->
-			<property name="javax.persistence.jdbc.user" value="engenharia" />
-			<property name="javax.persistence.jdbc.password" value="123456" />
+			<property name="javax.persistence.jdbc.user" value="biblioteca" />
+			<property name="javax.persistence.jdbc.password" value="projeto_michelle" />
 			
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			
