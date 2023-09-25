@@ -119,6 +119,12 @@ FOREIGN KEY(idEmprestimo) REFERENCES Emprestimo(idEmprestimo),
 FOREIGN KEY(cod_livro) REFERENCES Livro(cod_livro)
 );
 
+CREATE TABLE Reserva (
+codReserva INT PRIMARY KEY,
+dataReserva date,
+dataExpiracao date
+);
+
 INSERT INTO Usuario(idUsuario, nome, email, cpf, endereco, telefone)
 VALUES (1,'Ana Maria Silva','anamariasilva@iftm.edu.br','94622834865','Rua das Flores, 40,Pampulha, Uberlândia, MG',34957239486),
 (2,'Pedro Henrique Silva','pedrohenriquesilva@iftm.edu.br','20107020922','Rua 8, 1450,Centro, Uberlândia, MG',62963152879),
@@ -217,3 +223,7 @@ VALUES (1,1,10),
 (3,3,7),
 (4,4,9),
 (5,5,2);
+
+INSERT INTO Reserva(codReserva, dataReserva, dataExpiracao)
+VALUES (1, "2022-01-01", "2022-05-01"),
+(2, "2022-15-02", "2022-20-02");
