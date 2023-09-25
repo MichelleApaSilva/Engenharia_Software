@@ -9,12 +9,14 @@ import javax.persistence.Persistence;
 
 import model.Livro;
 import model.Reserva;
+import model.Usuario;
 
 public class Programa {
 	public static void main(String[] args) throws ParseException{
-		Livro l1 = new Livro(null, "SQL Seus metódos", "Ana Maria Silva", "SQL Editor Independente", 34957239486L);
-		Livro l2 = new Livro(null, "Romance Seus metódos", "Pedro Henrique Silva", "RomanceEditor Independente", 62963152879L);
-		Livro l3 = new Livro(null, "Auto-Ajuda Seus metódos", "José Batista Ferreira", "Auto-Ajuda Editor Independente", 32658412987L);
+		Livro l1 = new Livro(null, "SQL Seus metï¿½dos", "Ana Maria Silva", "SQL Editor Independente", 34957239486L);
+		Livro l2 = new Livro(null, "Romance Seus metï¿½dos", "Pedro Henrique Silva", "RomanceEditor Independente", 62963152879L);
+		Livro l3 = new Livro(null, "Auto-Ajuda Seus metï¿½dos", "Josï¿½ Batista Ferreira", "Auto-Ajuda Editor Independente", 32658412987L);
+		Usuario u1 = new Usuario(null, "Ana Maria Rosa da Silva", "anamariarosasilva@iftm.edu.br", "94622835555", "Av Liberdade, 200,Pampulha, UberlÃ¢ndia, MG", "34957239455" );
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		
@@ -44,6 +46,9 @@ public class Programa {
 		
 		em.persist(r1);
 		em.persist(r2);
+		
+		// em.persist(u1);
+		
 		
 		em.getTransaction().commit();
 		
