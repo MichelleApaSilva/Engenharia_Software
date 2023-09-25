@@ -16,13 +16,13 @@ public class Programa {
 		Livro l2 = new Livro(null, "Romance Seus metódos", "Pedro Henrique Silva", "RomanceEditor Independente", 62963152879L);
 		Livro l3 = new Livro(null, "Auto-Ajuda Seus metódos", "José Batista Ferreira", "Auto-Ajuda Editor Independente", 32658412987L);
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		
-		String dataReservaString1 = "01/01/2022";
-        String dataExpiracaoString1 = "05/01/2022";
+		String dataReservaString1 = "2022/01/01";
+        String dataExpiracaoString1 = "2022/05/01";
         
-        String dataReservaString2 = "15/02/2022";
-        String dataExpiracaoString2 = "20/02/2022";
+        String dataReservaString2 = "2022/15/02";
+        String dataExpiracaoString2 = "2022/20/02";
         
         Date dataReserva1 = sdf.parse(dataReservaString1);
         Date dataExpiracao1 = sdf.parse(dataExpiracaoString1);
