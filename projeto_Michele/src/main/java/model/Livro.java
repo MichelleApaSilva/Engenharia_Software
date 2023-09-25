@@ -1,23 +1,43 @@
 package model;
 
-public class Livro {
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Livro implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer codExemplar;
 	private String titulo;
 	private String autor;
 	private String editora;
-	private Integer isbn;
-	private Integer codExemplar;
+	private Long isbn;
 	
-	public Livro(String titulo, String autor, String editora, Integer isbn, Integer codExemplar) {
+	
+	public Livro(Integer codExemplar, String titulo, String autor, String editora, Long isbn) {
 		super();
+		this.codExemplar = codExemplar;
 		this.titulo = titulo;
 		this.autor = autor;
 		this.editora = editora;
 		this.isbn = isbn;
-		this.codExemplar = codExemplar;
 	}
 	
 	public Livro() {}
 
+	public Integer getCodExemplar() {
+		return codExemplar;
+	}
+
+	public void setCodExemplar(Integer codExemplar) {
+		this.codExemplar = codExemplar;
+	}
+		
 	public String getTitulo() {
 		return titulo;
 	}
@@ -42,20 +62,15 @@ public class Livro {
 		this.editora = editora;
 	}
 
-	public Integer getIsbn() {
+	public Long getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(Integer isbn) {
+	public void setIsbn(Long isbn) {
 		this.isbn = isbn;
 	}
 
-	public Integer getCodExemplar() {
-		return codExemplar;
-	}
 
-	public void setCodExemplar(Integer codExemplar) {
-		this.codExemplar = codExemplar;
-	}
+	
 	
 }
