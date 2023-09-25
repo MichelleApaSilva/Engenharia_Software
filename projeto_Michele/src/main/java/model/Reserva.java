@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
+//Autor : Maria Eduarda
+
 @Entity
 public class Reserva implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -24,6 +27,8 @@ public class Reserva implements Serializable{
 		this.dataExpiracao = dataExpiracao;
 	}
 
+	public Reserva(){}
+	
 	public Integer getCodReserva() {
 		return codReserva;
 	}
