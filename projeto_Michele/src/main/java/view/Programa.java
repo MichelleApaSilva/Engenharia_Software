@@ -10,14 +10,13 @@ import javax.persistence.Persistence;
 import model.Livro;
 import model.Reserva;
 import model.Usuario;
+import model.Requisicao;
 
 public class Programa {
 	public static void main(String[] args) throws ParseException{
 		Livro l1 = new Livro(null, "SQL Seus met�dos", "Ana Maria Silva", "SQL Editor Independente", 34957239486L);
 		Livro l2 = new Livro(null, "Romance Seus met�dos", "Pedro Henrique Silva", "RomanceEditor Independente", 62963152879L);
 		Livro l3 = new Livro(null, "Auto-Ajuda Seus met�dos", "Jos� Batista Ferreira", "Auto-Ajuda Editor Independente", 32658412987L);
-		Usuario u1 = new Usuario(null, "Ana Maria Rosa da Silva", "anamariarosasilva@iftm.edu.br", "94622835555", "Av Liberdade, 200,Pampulha, Uberlândia, MG", "34957239455");
-		Usuario u2 = new Usuario(null, "Maria Eduarda Sousa Martins", "mariaeduardasousamartins@iftm.edu.br", "94645628955", "Rua Ribeirão, 2200,Centro, Uberlândia, MG", "34985695896");
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		
@@ -36,7 +35,19 @@ public class Programa {
         Reserva r1 = new Reserva(null, dataReserva1, dataExpiracao1);
         Reserva r2 = new Reserva(null, dataReserva2, dataExpiracao2);
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projeto");
+		Usuario u1 = new Usuario(null, "Ana Maria Rosa da Silva", "anamariarosasilva@iftm.edu.br", "94622835555", "Av Liberdade, 200,Pampulha, Uberlândia, MG", "34957239455");
+		Usuario u2 = new Usuario(null, "Maria Eduarda Sousa Martins", "mariaeduardasousamartins@iftm.edu.br", "94645628955", "Rua Ribeirão, 2200,Centro, Uberlândia, MG", "34985695896");
+		
+		String dataRequisicaoString1 = "2022/09/25";
+		String dataRequisicaoString2 = "2022/08/15";
+		
+		Date dataRequisicao1 = sdf.parse(dataRequisicaoString1);
+		Date dataRequisicao2 = sdf.parse(dataRequisicaoString2);
+		
+		Requisicao req1 = new Requisicao(null, dataRequisicao1, "Indeferido");
+		Requisicao req2 = new Requisicao(null, dataRequisicao2, "Aguardando Compra");
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("projeto");
 		EntityManager em = emf.createEntityManager();
 		
 		em.getTransaction().begin();
@@ -51,6 +62,8 @@ public class Programa {
 		em.persist(u1);
 		em.persist(u2);
 		
+		em.persist(req1);
+		em.persist(req2);
 
 		em.getTransaction().commit();
 		
