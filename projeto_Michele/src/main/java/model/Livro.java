@@ -1,10 +1,15 @@
 package model;
 
 import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+
+// Autor : Maria Eduarda
 
 @Entity
 public class Livro implements Serializable {
@@ -12,7 +17,9 @@ public class Livro implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="cod_livro")
 	private Integer codExemplar;
+	
 	private String titulo;
 	private String autor;
 	private String editora;
