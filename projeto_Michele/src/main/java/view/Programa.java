@@ -16,7 +16,8 @@ public class Programa {
 		Livro l1 = new Livro(null, "SQL Seus met�dos", "Ana Maria Silva", "SQL Editor Independente", 34957239486L);
 		Livro l2 = new Livro(null, "Romance Seus met�dos", "Pedro Henrique Silva", "RomanceEditor Independente", 62963152879L);
 		Livro l3 = new Livro(null, "Auto-Ajuda Seus met�dos", "Jos� Batista Ferreira", "Auto-Ajuda Editor Independente", 32658412987L);
-		Usuario u1 = new Usuario(null, "Ana Maria Rosa da Silva", "anamariarosasilva@iftm.edu.br", "94622835555", "Av Liberdade, 200,Pampulha, Uberlândia, MG", "34957239455" );
+		Usuario u1 = new Usuario(null, "Ana Maria Rosa da Silva", "anamariarosasilva@iftm.edu.br", "94622835555", "Av Liberdade, 200,Pampulha, Uberlândia, MG", "34957239455");
+		Usuario u2 = new Usuario(null, "Maria Eduarda Sousa Martins", "mariaeduardasousamartins@iftm.edu.br", "94645628955", "Rua Ribeirão, 2200,Centro, Uberlândia, MG", "34985695896");
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		
@@ -47,9 +48,10 @@ public class Programa {
 		em.persist(r1);
 		em.persist(r2);
 		
-		// em.persist(u1);
+		em.persist(u1);
+		em.persist(u2);
 		
-		
+
 		em.getTransaction().commit();
 		
 		em.close();
