@@ -18,7 +18,7 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ReservarLivro extends JInternalFrame {
+public class ReservaLivro extends JInternalFrame {
 	private JTextField textCpf;
 	private JTextField textNomeAluno;
 	private JTextField textCurso;
@@ -49,7 +49,7 @@ public class ReservarLivro extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ReservarLivro() {
+	public ReservaLivro() {
 		setClosable(true);
 		setMaximizable(true);
 		setIconifiable(true);

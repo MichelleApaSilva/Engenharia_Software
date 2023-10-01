@@ -37,7 +37,7 @@ public class CancelamentoEmprestimo extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ReservarLivro frame = new ReservarLivro();
+					ReservaLivro frame = new ReservaLivro();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
