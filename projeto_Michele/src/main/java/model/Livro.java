@@ -16,6 +16,8 @@ public class Livro implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	//na minha versão do banco de dados não estava autoincremental
+	//assim gerou erro.
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="cod_livro")
 	private Integer codExemplar;
