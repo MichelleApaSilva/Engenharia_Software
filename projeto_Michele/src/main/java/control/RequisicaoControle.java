@@ -2,7 +2,6 @@ package control;
 
 import java.util.List;
 import model.Requisicao;
-import model.Usuario;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
