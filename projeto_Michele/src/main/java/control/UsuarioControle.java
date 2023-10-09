@@ -45,8 +45,7 @@ public class UsuarioControle {
             em.remove(objeto);
             em.getTransaction().commit();
          } catch (Exception ex) {
-            //ex.printStackTrace();
-            System.out.println("Não foi possível excluir.");
+            ex.printStackTrace();
             em.getTransaction().rollback();
          }
 	}
@@ -56,8 +55,7 @@ public class UsuarioControle {
         	Usuario objeto = buscarPorId(id);
             excluir(objeto);
          } catch (Exception ex) {
-            //ex.printStackTrace();
-        	System.out.println("Não foi possível excluir.");
+            ex.printStackTrace();
          }
 	}
 	
