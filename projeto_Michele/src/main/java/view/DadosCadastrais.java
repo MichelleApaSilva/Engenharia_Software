@@ -23,12 +23,13 @@ import java.awt.event.ActionEvent;
 
 public class DadosCadastrais extends JInternalFrame {
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_6;
-	private JTextField textidUsuario;
+	private JTextField textNome;
+	private JTextField textNascimento;
+	private JTextField textTelefone;
+	private JTextField textCpf;
+	private JTextField textEmail;
+	private JTextField textIdUsuario;
+	private JTextField textEndereco;
 
 	/**
 	 * Launch the application.
@@ -52,7 +53,7 @@ public class DadosCadastrais extends JInternalFrame {
 	public DadosCadastrais() {
 		setIconifiable(true);
 		setClosable(true);
-		setBounds(100, 100, 543, 330);
+		setBounds(100, 100, 558, 344);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -93,85 +94,95 @@ public class DadosCadastrais extends JInternalFrame {
 		painelCampos.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Dados", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		getContentPane().add(painelCampos, BorderLayout.CENTER);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(55, 58, 295, 20);
-		painelCampos.add(textField);
+		textNome = new JTextField();
+		textNome.setColumns(10);
+		textNome.setBounds(55, 57, 295, 20);
+		painelCampos.add(textNome);
 		
 		JLabel lblNome = new JLabel("Nome:");
 		lblNome.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNome.setBounds(10, 62, 43, 17);
+		lblNome.setBounds(10, 59, 43, 17);
 		painelCampos.add(lblNome);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(139, 97, 211, 20);
-		painelCampos.add(textField_1);
+		textNascimento = new JTextField();
+		textNascimento.setColumns(10);
+		textNascimento.setBounds(129, 88, 221, 20);
+		painelCampos.add(textNascimento);
 		
-		JLabel lblDt_nasc = new JLabel("Data de Nascimento:");
-		lblDt_nasc.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblDt_nasc.setBounds(10, 103, 123, 14);
-		painelCampos.add(lblDt_nasc);
+		JLabel lblDtNascimento = new JLabel("Data de Nascimento:");
+		lblDtNascimento.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblDtNascimento.setBounds(10, 97, 123, 17);
+		painelCampos.add(lblDtNascimento);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(65, 136, 285, 20);
-		painelCampos.add(textField_3);
+		textTelefone = new JTextField();
+		textTelefone.setColumns(10);
+		textTelefone.setBounds(65, 160, 285, 20);
+		painelCampos.add(textTelefone);
 		
 		JLabel lblTelefone = new JLabel("Telefone:");
 		lblTelefone.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblTelefone.setBounds(10, 141, 60, 14);
+		lblTelefone.setBounds(10, 167, 60, 17);
 		painelCampos.add(lblTelefone);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(44, 214, 306, 20);
-		painelCampos.add(textField_4);
+		textCpf = new JTextField();
+		textCpf.setColumns(10);
+		textCpf.setBounds(44, 124, 306, 20);
+		painelCampos.add(textCpf);
 		
 		JLabel lblCPF = new JLabel("CPF:");
 		lblCPF.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblCPF.setBounds(10, 217, 168, 14);
+		lblCPF.setBounds(10, 132, 168, 17);
 		painelCampos.add(lblCPF);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(55, 175, 295, 20);
-		painelCampos.add(textField_6);
+		textEmail = new JTextField();
+		textEmail.setColumns(10);
+		textEmail.setBounds(55, 196, 295, 20);
+		painelCampos.add(textEmail);
 		
 		JLabel lblEmail = new JLabel("E-mail:");
 		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblEmail.setBounds(10, 179, 60, 14);
+		lblEmail.setBounds(10, 202, 60, 17);
 		painelCampos.add(lblEmail);
 		
 		JButton btnInserir = new JButton("Inserir");
-		btnInserir.setBounds(376, 16, 129, 35);
+		btnInserir.setBounds(384, 16, 129, 35);
 		painelCampos.add(btnInserir);
 		
 		JButton btnAlterar = new JButton("Alterar");
-		btnAlterar.setBounds(376, 64, 129, 35);
+		btnAlterar.setBounds(384, 67, 129, 35);
 		painelCampos.add(btnAlterar);
 		
 		JButton btnExcluir = new JButton("Excluir");
-		btnExcluir.setBounds(376, 112, 129, 35);
+		btnExcluir.setBounds(384, 118, 129, 35);
 		painelCampos.add(btnExcluir);
 		
 		JButton btnConsultar = new JButton("Consultar");
-		btnConsultar.setBounds(376, 160, 129, 35);
+		btnConsultar.setBounds(384, 169, 129, 35);
 		painelCampos.add(btnConsultar);
 		
 		JButton btnFechar = new JButton("Fechar");
-		btnFechar.setBounds(376, 208, 129, 35);
+		btnFechar.setBounds(384, 220, 129, 35);
 		painelCampos.add(btnFechar);
 		
-		textidUsuario = new JTextField();
-		textidUsuario.setColumns(10);
-		textidUsuario.setBounds(80, 19, 270, 20);
-		painelCampos.add(textidUsuario);
+		textIdUsuario = new JTextField();
+		textIdUsuario.setColumns(10);
+		textIdUsuario.setBounds(80, 16, 270, 20);
+		painelCampos.add(textIdUsuario);
 		
 		JLabel lblIdUsurio = new JLabel("Id Usuário:");
 		lblIdUsurio.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblIdUsurio.setBounds(10, 25, 78, 17);
+		lblIdUsurio.setBounds(10, 18, 78, 17);
 		painelCampos.add(lblIdUsurio);
+		
+		JLabel lblEndereco = new JLabel("Endereço:");
+		lblEndereco.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblEndereco.setBounds(10, 237, 123, 17);
+		painelCampos.add(lblEndereco);
+		
+		textEndereco = new JTextField();
+		textEndereco.setColumns(10);
+		textEndereco.setBounds(70, 232, 280, 20);
+		painelCampos.add(textEndereco);
 
 	}
 }
