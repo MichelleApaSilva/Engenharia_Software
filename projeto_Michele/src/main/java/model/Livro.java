@@ -20,8 +20,8 @@ public class Livro implements Serializable {
 	//assim gerou erro.
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="cod_livro")
-	private Integer codExemplar;
 	
+	private Integer codExemplar;
 	private String titulo;
 	private String autor;
 	private String editora;
