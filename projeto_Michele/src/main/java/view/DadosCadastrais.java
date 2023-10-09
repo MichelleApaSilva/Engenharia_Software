@@ -106,7 +106,7 @@ public class DadosCadastrais extends JInternalFrame {
 		
 		textNascimento = new JTextField();
 		textNascimento.setColumns(10);
-		textNascimento.setBounds(129, 88, 221, 20);
+		textNascimento.setBounds(129, 95, 221, 20);
 		painelCampos.add(textNascimento);
 		
 		JLabel lblDtNascimento = new JLabel("Data de Nascimento:");
@@ -116,7 +116,7 @@ public class DadosCadastrais extends JInternalFrame {
 		
 		textTelefone = new JTextField();
 		textTelefone.setColumns(10);
-		textTelefone.setBounds(65, 160, 285, 20);
+		textTelefone.setBounds(65, 165, 285, 20);
 		painelCampos.add(textTelefone);
 		
 		JLabel lblTelefone = new JLabel("Telefone:");
@@ -126,7 +126,7 @@ public class DadosCadastrais extends JInternalFrame {
 		
 		textCpf = new JTextField();
 		textCpf.setColumns(10);
-		textCpf.setBounds(44, 124, 306, 20);
+		textCpf.setBounds(44, 130, 306, 20);
 		painelCampos.add(textCpf);
 		
 		JLabel lblCPF = new JLabel("CPF:");
@@ -136,7 +136,7 @@ public class DadosCadastrais extends JInternalFrame {
 		
 		textEmail = new JTextField();
 		textEmail.setColumns(10);
-		textEmail.setBounds(55, 196, 295, 20);
+		textEmail.setBounds(55, 200, 295, 20);
 		painelCampos.add(textEmail);
 		
 		JLabel lblEmail = new JLabel("E-mail:");
@@ -181,7 +181,7 @@ public class DadosCadastrais extends JInternalFrame {
 		
 		textEndereco = new JTextField();
 		textEndereco.setColumns(10);
-		textEndereco.setBounds(70, 232, 280, 20);
+		textEndereco.setBounds(70, 235, 280, 20);
 		painelCampos.add(textEndereco);
 
 	}
