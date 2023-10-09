@@ -17,12 +17,14 @@ public class Reserva implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer codReserva;
+	private Integer idUsuario;
 	private Date dataReserva;
 	private Date dataExpiracao;
 	
-	public Reserva(Integer codReserva, Date dataReserva, Date dataExpiracao) {
+	public Reserva(Integer codReserva, Date dataReserva, Date dataExpiracao, Integer idUsuario) {
 		super();
 		this.codReserva = codReserva;
+		this.idUsuario = idUsuario;
 		this.dataReserva = dataReserva;
 		this.dataExpiracao = dataExpiracao;
 	}
@@ -37,6 +39,14 @@ public class Reserva implements Serializable{
 		this.codReserva = codReserva;
 	}
 
+	public Integer getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Integer idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+	
 	public Date getDataReserva() {
 		return dataReserva;
 	}
