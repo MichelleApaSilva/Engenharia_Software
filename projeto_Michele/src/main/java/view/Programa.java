@@ -32,8 +32,8 @@ public class Programa {
         Date dataReserva2 = sdf.parse(dataReservaString2);
         Date dataExpiracao2 = sdf.parse(dataExpiracaoString2);
 		
-        Reserva r1 = new Reserva(null, dataReserva1, dataExpiracao1);
-        Reserva r2 = new Reserva(null, dataReserva2, dataExpiracao2);
+        Reserva r1 = new Reserva(null, dataReserva1, dataExpiracao1, 14);
+        Reserva r2 = new Reserva(null, dataReserva2, dataExpiracao2, 15);
 		
 		Usuario u1 = new Usuario(null, "Ana Maria Rosa da Silva", "anamariarosasilva@iftm.edu.br", "94622835555", "Av Liberdade, 200,Pampulha, Uberlândia, MG", "34957239455");
 		Usuario u2 = new Usuario(null, "Maria Eduarda Sousa Martins", "mariaeduardasousamartins@iftm.edu.br", "94645628955", "Rua Ribeirão, 2200,Centro, Uberlândia, MG", "34985695896");
