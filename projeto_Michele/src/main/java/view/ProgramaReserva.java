@@ -1,5 +1,7 @@
 package view;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import control.ReservaControle;
@@ -11,13 +13,14 @@ public class ProgramaReserva {
 		Reserva novo = new Reserva(null, null, null, null);		
 		ReservaControle controle = new ReservaControle();	
 		controle.inserir(novo);
+		Integer idnovo = novo.getCodReserva();
 		
 		//buscando
-		novo = controle.buscarPorId(3); //o id 3 precisa existir no banco, modifique o valor
+		novo = controle.buscarPorId(idnovo); //o id 3 precisa existir no banco, modifique o valor
 		System.out.println(novo.getCodReserva()); // substitua por um método get do seu projeto
 		
 		//modificando
-		novo.setCodReserva(null); // no seu caso utilize um método set do seu projeto
+		novo.setDataExpiracao(Date.from(Instant.now())); // no seu caso utilize um método set do seu projeto
 		controle.alterar(novo);
 		
 		//buscar todos
@@ -28,10 +31,10 @@ public class ProgramaReserva {
 		}
 		
 		//excluir
-		controle.excluir(objetos.get(0));
+		//controle.excluir(objetos.get(0));
 		
 		//excluir por id
-		controle.excluirPorId(3); //o id 3 precisa existir no banco, modifique o valor	
+		//controle.excluirPorId(7); //o id 3 precisa existir no banco, modifique o valor	
 	}
 }
 
