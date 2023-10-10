@@ -17,11 +17,17 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+import model.Usuario;
+import control.UsuarioControle;
 
 public class DadosCadastrais extends JInternalFrame {
+	private Usuario objeto;
+	private UsuarioControle controle = new UsuarioControle();
+	
 	private JFrame frame;
 	private JTextField textNome;
 	private JTextField textNascimento;
@@ -145,6 +151,14 @@ public class DadosCadastrais extends JInternalFrame {
 		painelCampos.add(lblEmail);
 		
 		JButton btnInserir = new JButton("Inserir");
+		btnInserir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				objeto = new Usuario(null, textNome.getText(), textCpf.getText(), textTelefone.getText(), textEmail.getText(), textEndereco.getText());
+				controle.inserir(objeto);
+				JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
+				textIdUsuario.setText(String.valueOf(objeto.getIdUsuario()));
+			}
+		});
 		btnInserir.setBounds(384, 16, 129, 35);
 		painelCampos.add(btnInserir);
 		
