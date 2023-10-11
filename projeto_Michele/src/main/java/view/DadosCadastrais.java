@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.EventQueue;
-
 import javax.swing.JInternalFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JLabel;
@@ -18,7 +17,6 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import model.Usuario;
@@ -163,18 +161,74 @@ public class DadosCadastrais extends JInternalFrame {
 		painelCampos.add(btnInserir);
 		
 		JButton btnAlterar = new JButton("Alterar");
+		btnAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (objeto!=null) {
+					objeto.setNome(textNome.getText());
+					objeto.setCpf(textCpf.getText());
+					objeto.setTelefone(textTelefone.getText());
+					objeto.setEmail(textEmail.getText());
+					objeto.setEndereco(textEndereco.getText());
+					controle.alterar(objeto);
+					JOptionPane.showMessageDialog(null, "Usuário alterado com sucesso!");
+				}else {
+					JOptionPane.showMessageDialog(null, "Não há objeto a ser modificado.");
+				}
+
+			}
+		});
 		btnAlterar.setBounds(384, 67, 129, 35);
 		painelCampos.add(btnAlterar);
 		
 		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (objeto!=null) {
+					controle.excluir(objeto);
+					objeto = null;
+					textNome.setText("");
+					textCpf.setText("");
+					textTelefone.setText("");
+					textEmail.setText("");
+					textEndereco.setText("");
+					JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso!");
+				}else {
+					JOptionPane.showMessageDialog(null, "Não há objeto a ser excluído.");
+				}
+			}
+		});
 		btnExcluir.setBounds(384, 118, 129, 35);
 		painelCampos.add(btnExcluir);
 		
 		JButton btnConsultar = new JButton("Consultar");
+		btnConsultar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Integer valor = Integer.parseInt(textIdUsuario.getText());
+				objeto = controle.buscarPorId(valor);
+				if (objeto!=null) {					
+					textIdUsuario.setText(String.valueOf(objeto.getIdUsuario()));
+					textNome.setText(objeto.getNome());
+					textCpf.setText(objeto.getCpf());
+					textTelefone.setText(objeto.getTelefone());
+					textEmail.setText(objeto.getEmail());
+					textEndereco.setText(objeto.getEndereco());
+					}else {
+						JOptionPane.showMessageDialog(null, "Não há Veterinário com esse código");
+						textIdUsuario.setText("");
+					}
+
+			}
+		});
 		btnConsultar.setBounds(384, 169, 129, 35);
 		painelCampos.add(btnConsultar);
 		
 		JButton btnFechar = new JButton("Fechar");
+		btnFechar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				dispose();
+			}
+		});
 		btnFechar.setBounds(384, 220, 129, 35);
 		painelCampos.add(btnFechar);
 		
