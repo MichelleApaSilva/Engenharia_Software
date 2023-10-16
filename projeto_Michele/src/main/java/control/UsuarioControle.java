@@ -68,4 +68,15 @@ public class UsuarioControle {
 		return em.createQuery("FROM " + nomeClasse).getResultList();
 	}
 
+	
+	public List<Usuario> buscarPorNome(String nome) {
+		String nomeClasse = Usuario.class.getName();
+		return em.createQuery("FROM " + nomeClasse + " WHERE nome = '" + nome + "'").getResultList();
+	}
+		
+	public List<Usuario> buscarPorCpf(String cpf) {
+		String nomeClasse = Usuario.class.getName();
+		return em.createQuery("FROM " + nomeClasse + " WHERE cpf = '" + cpf + "'").getResultList();
+	}
+
 }

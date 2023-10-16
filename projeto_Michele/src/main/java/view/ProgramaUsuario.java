@@ -32,10 +32,26 @@ public class ProgramaUsuario {
 			System.out.println(obj.getNome());
 		}
 		
+		//buscar por nome
+		System.out.println("Listando todos: ");
+		objetos = controle.buscarPorNome("");
+		for (Iterator iterator = objetos.iterator(); iterator.hasNext();) {
+			Usuario obj = (Usuario) iterator.next();
+			System.out.println(obj.getNome());
+		}
+		
+		//buscar por nome
+		System.out.println("Listando todos: ");
+		objetos = controle.buscarPorCpf("");
+		for (Iterator iterator = objetos.iterator(); iterator.hasNext();) {
+			Usuario obj = (Usuario) iterator.next();
+			System.out.println(obj.getCpf());
+		}
+		
 		//excluir
-		controle.excluir(objetos.get(0));
+		//controle.excluir(objetos.get(0));
 		
 		//excluir por id
-		controle.excluirPorId(3); //o id 3 precisa existir no banco, modifique o valor	
+		//controle.excluirPorId(3); //o id 3 precisa existir no banco, modifique o valor	
 	}
 }
