@@ -58,7 +58,7 @@ public class UsuarioControle {
             ex.printStackTrace();
          }
 	}
-	
+	//
 	public Usuario buscarPorId(Integer id) {
 		return em.find(Usuario.class, id);
 	}
