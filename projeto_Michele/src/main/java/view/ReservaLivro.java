@@ -74,11 +74,11 @@ public class ReservaLivro extends JInternalFrame {
 		mnMenu.add(mntmVoltar);
 		getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Cancelamento de Empr\u00E9stimo");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel.setBounds(0, 0, 434, 25);
-		getContentPane().add(lblNewLabel);
+		JLabel txtReservarLivro = new JLabel("Reservar Livro");
+		txtReservarLivro.setHorizontalAlignment(SwingConstants.CENTER);
+		txtReservarLivro.setFont(new Font("Tahoma", Font.BOLD, 16));
+		txtReservarLivro.setBounds(0, 0, 434, 25);
+		getContentPane().add(txtReservarLivro);
 		
 		JPanel panelDadosAluno = new JPanel();
 		panelDadosAluno.setLayout(null);
