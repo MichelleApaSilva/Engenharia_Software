@@ -135,6 +135,16 @@ public class TelaPrincipal {
 		});
 		menuLivro.add(mntmDevolverCopia);
 		
+		JMenuItem mntmDadosLivro = new JMenuItem("Dados do Livro");
+		mntmDadosLivro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaDevolverCopia tela = new TelaDevolverCopia(); 
+				tela.setVisible(true);
+				desktop.add(tela);
+			}
+		});
+		menuLivro.add(mntmDadosLivro);
+		
 		JMenu mnBoleto = new JMenu("Boleto");
 		barraMenu.add(mnBoleto);
 		
