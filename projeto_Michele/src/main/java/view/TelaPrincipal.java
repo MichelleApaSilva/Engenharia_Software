@@ -63,6 +63,10 @@ public class TelaPrincipal {
 		desktop.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		frmSistemaBiblioteca.getContentPane().add(desktop);
 		
+		JMenuItem menuItem = new JMenuItem("New menu item");
+		menuItem.setBounds(72, 96, 137, 26);
+		desktop.add(menuItem);
+		
 		JMenuBar barraMenu = new JMenuBar();
 		barraMenu.setBounds(0, 0, 434, 22);
 		frmSistemaBiblioteca.setJMenuBar(barraMenu);
@@ -105,6 +109,17 @@ public class TelaPrincipal {
 		});
 		menuLivro.add(menuSolicitarCompra);
 		
+		JMenuItem mntmDadosLivro = new JMenuItem("Dados do Livro");
+		mntmDadosLivro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DadosLivro tela = new DadosLivro();
+				tela.setVisible(true);
+				desktop.add(tela);
+			}
+		});
+		menuLivro.add(mntmDadosLivro);
+		
+		
 		JMenuItem menuLocalizar = new JMenuItem("Localizar");
 		menuLocalizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -134,16 +149,6 @@ public class TelaPrincipal {
 			}		
 		});
 		menuLivro.add(mntmDevolverCopia);
-		
-		JMenuItem mntmDadosLivro = new JMenuItem("Dados do Livro");
-		mntmDadosLivro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TelaDevolverCopia tela = new TelaDevolverCopia(); 
-				tela.setVisible(true);
-				desktop.add(tela);
-			}
-		});
-		menuLivro.add(mntmDadosLivro);
 		
 		JMenu mnBoleto = new JMenu("Boleto");
 		barraMenu.add(mnBoleto);
