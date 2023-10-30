@@ -21,8 +21,6 @@ import java.awt.event.ActionEvent;
 public class ReservaLivro extends JInternalFrame {
 	private JTextField textCpf;
 	private JTextField textNomeAluno;
-	private JTextField textCurso;
-	private JTextField textPeriodo;
 	private JTextField textEmprestimos;
 	private JTextField textNomeLivro;
 	private JTextField textAutor;
@@ -84,7 +82,7 @@ public class ReservaLivro extends JInternalFrame {
 		panelDadosAluno.setLayout(null);
 		panelDadosAluno.setToolTipText("");
 		panelDadosAluno.setBorder(new TitledBorder(null, "Dados Aluno", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panelDadosAluno.setBounds(10, 31, 445, 135);
+		panelDadosAluno.setBounds(10, 31, 445, 104);
 		getContentPane().add(panelDadosAluno);
 		
 		JLabel lblCpf = new JLabel("CPF aluno:");
@@ -97,19 +95,10 @@ public class ReservaLivro extends JInternalFrame {
 		lblNomeAluno.setBounds(10, 51, 91, 14);
 		panelDadosAluno.add(lblNomeAluno);
 		
-		JLabel lblCurso = new JLabel("Curso:");
-		lblCurso.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblCurso.setBounds(10, 79, 46, 14);
-		panelDadosAluno.add(lblCurso);
-		
 		JLabel lblEmprestimos = new JLabel("Possui empr\u00E9stimos?");
 		lblEmprestimos.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblEmprestimos.setBounds(10, 107, 135, 14);
+		lblEmprestimos.setBounds(10, 75, 278, 14);
 		panelDadosAluno.add(lblEmprestimos);
-		
-		JLabel lblPeriodo = new JLabel("Per\u00EDodo:");
-		lblPeriodo.setBounds(288, 79, 57, 14);
-		panelDadosAluno.add(lblPeriodo);
 		
 		textCpf = new JTextField();
 		textCpf.setColumns(10);
@@ -121,19 +110,9 @@ public class ReservaLivro extends JInternalFrame {
 		textNomeAluno.setBounds(106, 45, 182, 20);
 		panelDadosAluno.add(textNomeAluno);
 		
-		textCurso = new JTextField();
-		textCurso.setColumns(10);
-		textCurso.setBounds(106, 76, 172, 20);
-		panelDadosAluno.add(textCurso);
-		
-		textPeriodo = new JTextField();
-		textPeriodo.setColumns(10);
-		textPeriodo.setBounds(344, 73, 91, 20);
-		panelDadosAluno.add(textPeriodo);
-		
 		textEmprestimos = new JTextField();
 		textEmprestimos.setColumns(10);
-		textEmprestimos.setBounds(155, 104, 120, 20);
+		textEmprestimos.setBounds(155, 72, 133, 20);
 		panelDadosAluno.add(textEmprestimos);
 		
 		JButton btnPesquisarAluno = new JButton("Pesquisar");
@@ -144,7 +123,7 @@ public class ReservaLivro extends JInternalFrame {
 		panelDadosLivro.setLayout(null);
 		panelDadosLivro.setToolTipText("");
 		panelDadosLivro.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Dados Livro", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panelDadosLivro.setBounds(10, 180, 445, 163);
+		panelDadosLivro.setBounds(10, 146, 445, 163);
 		getContentPane().add(panelDadosLivro);
 		
 		JLabel lblExemplares = new JLabel("Exemplares Dispon\u00EDveis:");
