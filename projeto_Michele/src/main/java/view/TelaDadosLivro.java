@@ -23,7 +23,7 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class DadosLivro extends JInternalFrame {
+public class TelaDadosLivro extends JInternalFrame {
 	// atributos do projeto
 	private Livro objeto;
 	// ou colocar no construtor
@@ -60,7 +60,7 @@ public class DadosLivro extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public DadosLivro() {
+	public TelaDadosLivro() {
 		// controle = new LivroControle();
 		setClosable(true);
 		setMaximizable(true);
