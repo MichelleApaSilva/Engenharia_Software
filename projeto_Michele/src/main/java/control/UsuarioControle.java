@@ -71,12 +71,12 @@ public class UsuarioControle {
 	
 	public List<Usuario> buscarPorNome(String nome) {
 		String nomeClasse = Usuario.class.getName();
-		return em.createQuery("FROM " + nomeClasse + " WHERE nome = '" + nome + "'").getResultList();
+		return em.createQuery("FROM " + nomeClasse + " WHERE nome LIKE '%" + nome + "%'").getResultList();
 	}
 		
 	public List<Usuario> buscarPorCpf(String cpf) {
 		String nomeClasse = Usuario.class.getName();
-		return em.createQuery("FROM " + nomeClasse + " WHERE cpf = '" + cpf + "'").getResultList();
+		return em.createQuery("FROM " + nomeClasse + " WHERE cpf LIKE '%" + cpf + "%'").getResultList();
 	}
 
 }
