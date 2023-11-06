@@ -107,7 +107,7 @@ public class TelaPrincipal {
 		JMenuItem mntmDadosLivro = new JMenuItem("Dados do Livro");
 		mntmDadosLivro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DadosLivro tela = new DadosLivro();
+				TelaDadosLivro tela = new TelaDadosLivro();
 				tela.setVisible(true);
 				desktop.add(tela);
 			}
