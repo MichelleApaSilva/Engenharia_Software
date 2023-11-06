@@ -103,18 +103,17 @@ public class TelaPrincipal {
 				desktop.add(tela);
 			}
 		});
+		menuLivro.add(menuSolicitarCompra);
 		
-		JMenuItem mntmDadosLivro = new JMenuItem("Dados do Livro");
-		mntmDadosLivro.addActionListener(new ActionListener() {
+		JMenuItem menuDadosLivro = new JMenuItem("Dados do Livro");
+		menuDadosLivro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaDadosLivro tela = new TelaDadosLivro();
 				tela.setVisible(true);
 				desktop.add(tela);
 			}
 		});
-		menuLivro.add(mntmDadosLivro);
-		menuLivro.add(menuSolicitarCompra);
-		
+		menuLivro.add(menuDadosLivro);
 		
 		JMenuItem menuLocalizar = new JMenuItem("Localizar");
 		menuLocalizar.addActionListener(new ActionListener() {
