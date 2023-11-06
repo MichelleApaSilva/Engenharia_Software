@@ -63,10 +63,6 @@ public class TelaPrincipal {
 		desktop.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		frmSistemaBiblioteca.getContentPane().add(desktop);
 		
-		JMenuItem menuItem = new JMenuItem("New menu item");
-		menuItem.setBounds(72, 96, 137, 26);
-		desktop.add(menuItem);
-		
 		JMenuBar barraMenu = new JMenuBar();
 		barraMenu.setBounds(0, 0, 434, 22);
 		frmSistemaBiblioteca.setJMenuBar(barraMenu);
@@ -107,7 +103,6 @@ public class TelaPrincipal {
 				desktop.add(tela);
 			}
 		});
-		menuLivro.add(menuSolicitarCompra);
 		
 		JMenuItem mntmDadosLivro = new JMenuItem("Dados do Livro");
 		mntmDadosLivro.addActionListener(new ActionListener() {
@@ -118,6 +113,7 @@ public class TelaPrincipal {
 			}
 		});
 		menuLivro.add(mntmDadosLivro);
+		menuLivro.add(menuSolicitarCompra);
 		
 		
 		JMenuItem menuLocalizar = new JMenuItem("Localizar");
