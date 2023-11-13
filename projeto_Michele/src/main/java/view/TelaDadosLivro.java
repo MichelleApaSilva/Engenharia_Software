@@ -35,7 +35,7 @@ public class TelaDadosLivro extends JInternalFrame {
 	private JTextField textEditora;
 	private JTextField textIsbn;
 	private JTextField textCodExemplar;
-	private JButton btnInserir;
+	private JButton btnNovo;
 	private JButton btnExcluir;
 	private JButton btnConsultar;
 	private JButton btnSalvar;
@@ -48,7 +48,7 @@ public class TelaDadosLivro extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DadosLivro frame = new DadosLivro();
+					TelaDadosLivro frame = new TelaDadosLivro();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -114,22 +114,23 @@ public class TelaDadosLivro extends JInternalFrame {
 		textEditora.setBounds(119, 102, 182, 20);
 		panelDadosLivro.add(textEditora);
 		
-		btnInserir = new JButton("Inserir");
-		btnInserir.addActionListener(new ActionListener() {
+		btnNovo = new JButton("Novo");
+		btnNovo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textTitulo.setEnabled(true);
+				/*textTitulo.setEnabled(true);
 				textAutor.setEnabled(true);
 				textEditora.setEnabled(true);
 				btnSalvar.setEnabled(true);
-				Long valor = new parse Long(textIsbn.getText());
-				objeto = new Livro(null, textTitulo.getText(), textAutor.getText(), textEditora.getText(), textIsbn.getText());
-				controle.inserir(objeto);
+				textIsbn.setText(String.valueOf(objeto.getIsbn()));
+				controle.inserir(objeto);*/
+				definirEstadoEdicao();
+				limparCampos();
+				textTitulo.requestFocus();
 				JOptionPane.showMessageDialog(null, "Livro cadastrado com sucesso");
-				textCodExemplar.setText(String.valueOf(objeto.getCodExemplar()));
 			}
 		});
-		btnInserir.setBounds(330, 19, 105, 23);
-		panelDadosLivro.add(btnInserir);
+		btnNovo.setBounds(330, 19, 105, 23);
+		panelDadosLivro.add(btnNovo);
 		
 		JLabel lblTitulo = new JLabel("T\u00EDtulo:");
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -171,12 +172,14 @@ public class TelaDadosLivro extends JInternalFrame {
 			public void actionPerformed(ActionEvent e) {
 				Integer valor = Integer.parseInt(textCodExemplar.getText());
 				objeto = controle.buscarPorId(valor);
+				String id = JOptionPane.showInputDialog("Digite o id do livro: ");
+				objeto = controle.buscarPorId(Integer.parseInt(id));
 				if (objeto != null) {
 					textCodExemplar.setText(String.valueOf(objeto.getCodExemplar()));
 					textTitulo.setText(objeto.getTitulo());
 					textAutor.setText(objeto.getAutor());
-					textEditora.setText(objeto.getEditora());
-					textIsbn.setText(objeto.getIsbn());
+					textEditora.setText(objeto.getEditora());					
+					textIsbn.setText(String.valueOf(objeto.getIsbn()));
 				}else {
 					JOptionPane.showMessageDialog(null, "Não existe o livro com o código digitado");
 					textCodExemplar.setText("");
@@ -260,6 +263,35 @@ public class TelaDadosLivro extends JInternalFrame {
 		btnSalvar.setBounds(218, 350, 89, 23);
 		getContentPane().add(btnSalvar);
 
+	}
+	
+	private void definirEstadoInicial() {
+		limparCampos();
+		btnNovo.setEnabled(true);
+		btnExcluir.setEnabled(false);
+		btnAlterar.setEnabled(false);
+		btnConsultar.setEnabled(true);
+		btnSalvar.setEnabled(false);
+		
+		textTitulo.setEnabled(false);
+		textAutor.setEnabled(false);
+		textEditora.setEnabled(false);
+		textIsbn.setText(String.valueOf(objeto.getIsbn()));
+	}
+	
+	private void definirEstadoEdicao() {
+		textTitulo.setEnabled(true);
+		textAutor.setEnabled(true);
+		textEditora.setEnabled(true);
+		textIsbn.setText(String.valueOf(objeto.getIsbn()));
+	}
+	
+	private void limparCampos() {
+		textCodExemplar.setText("");
+		textTitulo.setText("");
+		textAutor.setText("");
+		textEditora.setText("");
+		textIsbn.setText("");
 	}
 
 }
