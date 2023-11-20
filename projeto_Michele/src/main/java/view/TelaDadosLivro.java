@@ -65,7 +65,7 @@ public class TelaDadosLivro extends JInternalFrame {
 		setClosable(true);
 		setMaximizable(true);
 		setIconifiable(true);
-		setBounds(100, 100, 480, 436);
+		setBounds(100, 100, 480, 343);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -96,7 +96,7 @@ public class TelaDadosLivro extends JInternalFrame {
 		panelDadosLivro.setLayout(null);
 		panelDadosLivro.setToolTipText("");
 		panelDadosLivro.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Dados Livro", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panelDadosLivro.setBounds(10, 36, 445, 172);
+		panelDadosLivro.setBounds(10, 36, 445, 208);
 		getContentPane().add(panelDadosLivro);
 		
 		textTitulo = new JTextField();
@@ -193,7 +193,7 @@ public class TelaDadosLivro extends JInternalFrame {
 		btnAlterar.setEnabled(false);
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(objeto != null) {
+				/*if(objeto != null) {
 					objeto.setTitulo(textTitulo.getText());
 					objeto.setAutor(textAutor.getText());
 					objeto.setEditora(textEditora.getText());
@@ -202,9 +202,12 @@ public class TelaDadosLivro extends JInternalFrame {
 					JOptionPane.showMessageDialog(null, "Livro alterado com sucesso.");
 				}else{
 					JOptionPane.showMessageDialog(null, "Não há livro para ser modificado.");
-				}
+				}*/
+				definirEstadoEdicao();
+				textTitulo.requestFocus();
 			}
 		});
+		btnAlterar.setEnabled(false);
 		btnAlterar.setBounds(330, 45, 105, 23);
 		panelDadosLivro.add(btnAlterar);
 		
@@ -215,17 +218,14 @@ public class TelaDadosLivro extends JInternalFrame {
 				if (objeto !=null) {
 					controle.excluir(objeto);
 					objeto = null;
-					textCodExemplar.setText("");
-					textTitulo.setText("");
-					textAutor.setText("");
-					textEditora.setText("");
-					textIsbn.setText("");
+					definirEstadoInicial();
 					JOptionPane.showMessageDialog(null, "Livro excluído com sucesso.");
 				}else {
 						JOptionPane.showMessageDialog(null, "Não há objeto a ser excluído.");
 					}
 				}					
 		});
+
 		btnExcluir.setBounds(330, 73, 105, 23);
 		panelDadosLivro.add(btnExcluir);
 		
@@ -240,28 +240,49 @@ public class TelaDadosLivro extends JInternalFrame {
 		panelDadosLivro.add(btnFechar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(116, 350, 89, 23);
-		getContentPane().add(btnCancelar);
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				definirEstadoInicial();
+			}
+		});
+		btnCancelar.setBounds(94, 164, 105, 23);
+		panelDadosLivro.add(btnCancelar);
 		
 		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.setEnabled(false);
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(textTitulo.getText().length() < 5) {
 					JOptionPane.showMessageDialog(btnSalvar, "O título precisa ter no mínimo 5 caracteres.");
 				}else {
-					livro.setTitulo(textTitulo.getText());
-					livro.setAutor(textAutor.getText());
-					controle.inserir(livro);
-					JOptionPane.showMessageDialog(btnSalvar, "Livro cadastrado.");
-					textTitulo.setEnabled(false);
-					textAutor.setEnabled(false);
-					textCodExemplar(String.valueof(livro.getCodExemplar()));
-				}
+					// novo livro
+					if (objeto == null) {
+						objeto = new Livro(); 
+						objeto.setTitulo(textTitulo.getText());
+						objeto.setAutor(textAutor.getText());
+						objeto.setEditora(textEditora.getText());
+						textIsbn.setText(String.valueOf(objeto.getIsbn()));
+						controle.inserir(objeto);
+						JOptionPane.showMessageDialog(btnSalvar, "Livro cadastrado.");
+						textTitulo.setEnabled(false);
+						textAutor.setEnabled(false);
+						textEditora.setEnabled(false);
+						textIsbn.setEnabled(false);
+						textCodExemplar.setText(String.valueOf(objeto.getCodExemplar()));
+						textIsbn.setText(String.valueOf(objeto.getIsbn()));
+				}else
+					// alterar 
+					objeto.setTitulo(textTitulo.getText());
+					objeto.setAutor(textAutor.getText());
+					objeto.setEditora(textEditora.getText());
+					textIsbn.setText(String.valueOf(objeto.getIsbn()));
+					controle.alterar(objeto);
+					JOptionPane.showMessageDialog(btnSalvar, "Livro atualizado.");
 			}
-		});
-		btnSalvar.setEnabled(false);
-		btnSalvar.setBounds(218, 350, 89, 23);
-		getContentPane().add(btnSalvar);
+				definirEstadoConsulta();
+		}});
+		btnSalvar.setBounds(210, 164, 105, 23);
+		panelDadosLivro.add(btnSalvar);	
 
 	}
 	
@@ -286,6 +307,19 @@ public class TelaDadosLivro extends JInternalFrame {
 		textIsbn.setText(String.valueOf(objeto.getIsbn()));
 	}
 	
+	private void definirEstadoConsulta() {
+		textTitulo.setEnabled(false);
+		textEditora.setEnabled(false);
+		textAutor.setEnabled(false);
+		textIsbn.setEnabled(false);
+		
+		btnNovo.setEnabled(true);
+		btnExcluir.setEnabled(true);
+		btnAlterar.setEnabled(true);
+		btnConsultar.setEnabled(true);
+		btnSalvar.setEnabled(false);
+	}
+	
 	private void limparCampos() {
 		textCodExemplar.setText("");
 		textTitulo.setText("");
@@ -293,5 +327,4 @@ public class TelaDadosLivro extends JInternalFrame {
 		textEditora.setText("");
 		textIsbn.setText("");
 	}
-
 }
