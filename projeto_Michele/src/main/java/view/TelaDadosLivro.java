@@ -205,7 +205,7 @@ public class TelaDadosLivro extends JInternalFrame {
 				definirEstadoEdicao();
 				textTitulo.requestFocus();
 			}
-		});
+		});	
 		btnAlterar.setEnabled(false);
 		btnAlterar.setBounds(330, 45, 105, 23);
 		panelDadosLivro.add(btnAlterar);
@@ -263,12 +263,12 @@ public class TelaDadosLivro extends JInternalFrame {
 						textIsbn.setText(String.valueOf(objeto.getIsbn()));
 						controle.inserir(objeto);
 						JOptionPane.showMessageDialog(btnSalvar, "Livro cadastrado.");
-						textTitulo.setEnabled(false);
+						/*textTitulo.setEnabled(false);
 						textAutor.setEnabled(false);
 						textEditora.setEnabled(false);
 						textIsbn.setEnabled(false);
 						textCodExemplar.setText(String.valueOf(objeto.getCodExemplar()));
-						textIsbn.setText(String.valueOf(objeto.getIsbn()));
+						textIsbn.setText(String.valueOf(objeto.getIsbn()));*/
 				}else
 					// alterar 
 					objeto.setTitulo(textTitulo.getText());
