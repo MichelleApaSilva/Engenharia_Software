@@ -269,7 +269,7 @@ public class TelaDadosLivro extends JInternalFrame {
 						textIsbn.setEnabled(false);
 						textCodExemplar.setText(String.valueOf(objeto.getCodExemplar()));
 						textIsbn.setText(String.valueOf(objeto.getIsbn()));*/
-				}else
+				}else {
 					// alterar 
 					objeto.setTitulo(textTitulo.getText());
 					objeto.setAutor(textAutor.getText());
@@ -277,8 +277,9 @@ public class TelaDadosLivro extends JInternalFrame {
 					textIsbn.setText(String.valueOf(objeto.getIsbn()));
 					controle.alterar(objeto);
 					JOptionPane.showMessageDialog(btnSalvar, "Livro atualizado.");
-			}
+				}
 				definirEstadoConsulta();
+			}	
 		}});
 		btnSalvar.setBounds(210, 164, 105, 23);
 		panelDadosLivro.add(btnSalvar);	
