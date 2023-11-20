@@ -263,6 +263,7 @@ public class TelaDadosLivro extends JInternalFrame {
 						textIsbn.setText(String.valueOf(objeto.getIsbn()));
 						controle.inserir(objeto);
 						JOptionPane.showMessageDialog(btnSalvar, "Livro cadastrado.");
+						textCodExemplar.setText(String.valueOf(objeto.getCodExemplar()));
 						/*textTitulo.setEnabled(false);
 						textAutor.setEnabled(false);
 						textEditora.setEnabled(false);
@@ -297,14 +298,20 @@ public class TelaDadosLivro extends JInternalFrame {
 		textTitulo.setEnabled(false);
 		textAutor.setEnabled(false);
 		textEditora.setEnabled(false);
-		textIsbn.setText(String.valueOf(objeto.getIsbn()));
+		textIsbn.setEnabled(false);
 	}
 	
 	private void definirEstadoEdicao() {
 		textTitulo.setEnabled(true);
 		textAutor.setEnabled(true);
 		textEditora.setEnabled(true);
-		textIsbn.setText(String.valueOf(objeto.getIsbn()));
+		textIsbn.setEnabled(true);
+		
+		btnNovo.setEnabled(false);
+		btnExcluir.setEnabled(false);
+		btnAlterar.setEnabled(false);
+		btnConsultar.setEnabled(false);
+		btnSalvar.setEnabled(true);
 	}
 	
 	private void definirEstadoConsulta() {
