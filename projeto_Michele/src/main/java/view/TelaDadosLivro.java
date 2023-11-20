@@ -307,10 +307,10 @@ public class TelaDadosLivro extends JInternalFrame {
 		textEditora.setEnabled(true);
 		textIsbn.setEnabled(true);
 		
-		btnNovo.setEnabled(false);
-		btnExcluir.setEnabled(false);
-		btnAlterar.setEnabled(false);
-		btnConsultar.setEnabled(false);
+		btnNovo.setEnabled(true);
+		btnExcluir.setEnabled(true);
+		btnAlterar.setEnabled(true);
+		btnConsultar.setEnabled(true);
 		btnSalvar.setEnabled(true);
 	}
 	
