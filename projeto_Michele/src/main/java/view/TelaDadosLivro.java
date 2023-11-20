@@ -190,7 +190,6 @@ public class TelaDadosLivro extends JInternalFrame {
 		panelDadosLivro.add(btnConsultar);
 		
 		btnAlterar = new JButton("Alterar");
-		btnAlterar.setEnabled(false);
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*if(objeto != null) {
