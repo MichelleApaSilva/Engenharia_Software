@@ -1,6 +1,5 @@
 package view;
 import java.awt.EventQueue;
-
 import javax.swing.JInternalFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -22,6 +21,8 @@ import javax.swing.border.EtchedBorder;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+// Autora: Maria Eduarda
 
 public class TelaDadosLivro extends JInternalFrame {
 	// atributos do projeto
@@ -114,8 +115,9 @@ public class TelaDadosLivro extends JInternalFrame {
 		textEditora.setBounds(119, 102, 182, 20);
 		panelDadosLivro.add(textEditora);
 		
+	
+		
 		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.setEnabled(false);
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(textTitulo.getText().length() < 5) {
@@ -252,12 +254,10 @@ public class TelaDadosLivro extends JInternalFrame {
 				textTitulo.requestFocus();
 			}
 		});	
-		btnAlterar.setEnabled(false);
 		btnAlterar.setBounds(330, 45, 105, 23);
 		panelDadosLivro.add(btnAlterar);
 		
 		btnExcluir = new JButton("Excluir");
-		btnExcluir.setEnabled(false);
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (objeto !=null) {
