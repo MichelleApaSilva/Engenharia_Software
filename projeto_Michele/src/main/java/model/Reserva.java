@@ -17,6 +17,7 @@ public class Reserva implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer codReserva;
+	private Integer cod_Livro;
 	private Integer idUsuario;
 	private Date dataReserva;
 	private Date dataExpiracao;
@@ -24,9 +25,18 @@ public class Reserva implements Serializable{
 	public Reserva(Integer codReserva, Date dataReserva, Date dataExpiracao, Integer idUsuario) {
 		super();
 		this.codReserva = codReserva;
+		this.cod_Livro = cod_Livro;
 		this.idUsuario = idUsuario;
 		this.dataReserva = dataReserva;
 		this.dataExpiracao = dataExpiracao;
+	}
+
+	public Integer getCod_Livro() {
+		return cod_Livro;
+	}
+
+	public void setCod_Livro(Integer cod_Livro) {
+		this.cod_Livro = cod_Livro;
 	}
 
 	public Reserva(){}

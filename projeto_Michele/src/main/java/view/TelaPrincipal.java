@@ -145,8 +145,22 @@ public class TelaPrincipal {
 		});
 		menuLivro.add(mntmDevolverCopia);
 		
+		
+		
+		JMenuItem menuReserva = new JMenuItem("Reservar Livro");
+		menuReserva.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ReservaLivro tela = new ReservaLivro();
+				tela.setVisible(true);
+				desktop.add(tela);
+			}
+		});
+		menuLivro.add(menuReserva);
+		
 		JMenu mnBoleto = new JMenu("Boleto");
 		barraMenu.add(mnBoleto);
+		
+		
 		
 		JMenuItem mntmGerarBoleto = new JMenuItem("Gerar");
 		mntmGerarBoleto.addActionListener(new ActionListener() {
