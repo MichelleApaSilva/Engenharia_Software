@@ -30,21 +30,21 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.BevelBorder;
-
-
 import control.ReservaControle;
+import control.UsuarioControle;
 import model.Reserva;
+import model.Usuario;
 
 public class ReservaLivro extends JInternalFrame {
 	// atributos do projeto
 	private Reserva objeto;
+	private Usuario usuario;
 	// ou colocar no construtor
 	private ReservaControle controle = new ReservaControle();
+	private UsuarioControle usuarioControle = new UsuarioControle(); 
 	
 	private JTextField textCpf;
-	private JTextField textNomeAluno;
+	private JTextField textNome;
 	private JTextField textEmprestimos;
 	private JTextField textTitulo;
 	private JTextField textAutor;
@@ -132,28 +132,33 @@ public class ReservaLivro extends JInternalFrame {
 		textCpf.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				
-				
-				/*table.setModel(new DefaultTableModel(
+				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+					String cpf = textCpf.getText();
+					List<Usuario> usuario = usuarioControle.buscarPorCpf(cpf);
+				}
+					
+				table.setModel(new DefaultTableModel(
+						
 						new Object[][] {
-							{null, "Bruno", null},
+							
+							{null, null, null},
 							{null, null, null},
 							{null, null, null},
 						},
 						new String[] {
 							"CPF", "Nome", "Possui emprestimos?"
 						}
-					));*/
+					));
 			}
 		});
 		textCpf.setColumns(10);
 		textCpf.setBounds(106, 17, 182, 20);
 		panelDadosAluno.add(textCpf);
 		
-		textNomeAluno = new JTextField();
-		textNomeAluno.setColumns(10);
-		textNomeAluno.setBounds(106, 45, 182, 20);
-		panelDadosAluno.add(textNomeAluno);
+		textNome = new JTextField();
+		textNome.setColumns(10);
+		textNome.setBounds(106, 45, 182, 20);
+		panelDadosAluno.add(textNome);
 		
 		textEmprestimos = new JTextField();
 		textEmprestimos.setColumns(10);
@@ -243,6 +248,7 @@ public class ReservaLivro extends JInternalFrame {
 		JButton btnInserir = new JButton("Novo");
 		btnInserir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				/*definirEstadoEdicao();
 				limparCampos();*/
 				textTitulo.requestFocus();
@@ -252,14 +258,37 @@ public class ReservaLivro extends JInternalFrame {
 		getContentPane().add(btnInserir);
 		
 		JButton btnAlterar = new JButton("Alterar");
+		btnAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				definirEstadoEdicao();
+				textTitulo.requestFocus();
+			}
+		});
 		btnAlterar.setBounds(423, 130, 105, 23);
 		getContentPane().add(btnAlterar);
 		
 		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (objeto !=null) {
+					controle.excluir(objeto);
+					objeto = null;
+					definirEstadoInicial();
+					JOptionPane.showMessageDialog(null, "Reserva excluído com sucesso.");
+				}else {
+						JOptionPane.showMessageDialog(null, "Não há objeto a ser excluído.");
+					}
+				}			
+			});
 		btnExcluir.setBounds(423, 164, 105, 23);
 		getContentPane().add(btnExcluir);
 		
 		JButton btnConsultar = new JButton("Consultar");
+		btnConsultar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnConsultar.setBounds(423, 193, 105, 23);
 		getContentPane().add(btnConsultar);
 		
@@ -268,22 +297,71 @@ public class ReservaLivro extends JInternalFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
-			});
-		btnSalvar.setBounds(215, 350, 105, 23);
+		});
+		btnSalvar.setBounds(222, 297, 105, 23);
 		getContentPane().add(btnSalvar);
 		
 		JButton btnCancelar_1 = new JButton("Cancelar");
-		btnCancelar_1.setBounds(100, 350, 105, 23);
+		btnCancelar_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				definirEstadoInicial();
+			}
+		});
+		btnCancelar_1.setBounds(104, 297, 105, 23);
 		getContentPane().add(btnCancelar_1);
 		
 		JButton btnFechar = new JButton("Fechar");
+		btnFechar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				dispose();
+			}
+		});
 		btnFechar.setBounds(423, 224, 105, 23);
 		getContentPane().add(btnFechar);
 		
 		
 
 	}
-	
 
+	private void definirEstadoInicial() {
+		limparCampos();
+		btnInserir.setEnabled(true);
+		btnExcluir.setEnabled(false);
+		btnAlterar.setEnabled(false);
+		btnConsultar.setEnabled(true);
+		btnSalvar.setEnabled(false);
 	
+		textTitulo.setEnabled(false);
+		textAutor.setEnabled(false);
+		textEditora.setEnabled(false);
+		textIsbn.setEnabled(false);
+		textNome.setEnabled(false);
+		textCpf.setEnabled(false);
+	}
+	
+	private void definirEstadoEdicao() {
+		textTitulo.setEnabled(true);
+		textAutor.setEnabled(true);
+		textEditora.setEnabled(true);
+		textIsbn.setEnabled(true);
+		textNome.setEnabled(true);
+		textCpf.setEnabled(true);
+		
+		btnInserir.setEnabled(false);
+		btnExcluir.setEnabled(false);
+		btnAlterar.setEnabled(false);
+		btnConsultar.setEnabled(false);
+		btnSalvar.setEnabled(true);
+	}
+	
+	private void limparCampos() {
+		textTitulo.setText("");
+		textAutor.setText("");
+		textEditora.setText("");
+		textIsbn.setText("");
+		
+		textNome.setText("");
+		textCpf.setText("");
+	}
 }
