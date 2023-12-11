@@ -32,6 +32,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import control.ReservaControle;
 import control.UsuarioControle;
+import model.Livro;
 import model.Reserva;
 import model.Usuario;
 
@@ -52,6 +53,15 @@ public class ReservaLivro extends JInternalFrame {
 	private JTextField textIsbn;
 	private JTable table;
 	private JTable table_1;
+	private JTextField textIdReserva;
+	private JTextField textDataReserva;
+	private JTextField textDataExpiracao;
+	private JButton btnInserir;
+	private JButton btnCancelar_1;
+	private JButton btnExcluir;
+	private JButton btnAlterar;
+	private JButton btnConsultar;
+	private JButton btnSalvar;
 
 	/**
 	 * Launch the application.
@@ -107,6 +117,45 @@ public class ReservaLivro extends JInternalFrame {
 		tabbedPane.setBounds(10, 31, 403, 255);
 		getContentPane().add(tabbedPane);
 		
+		JPanel panelDadosReserva = new JPanel();
+		panelDadosReserva.setLayout(null);
+		panelDadosReserva.setToolTipText("");
+		panelDadosReserva.setBorder(new LineBorder(new Color(0, 0, 0)));
+		tabbedPane.addTab("Dados da Reserva", null, panelDadosReserva, null);
+		
+		JLabel lblIdReserva = new JLabel("Id Reserva: ");
+		lblIdReserva.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblIdReserva.setBounds(10, 23, 81, 14);
+		panelDadosReserva.add(lblIdReserva);
+		
+		JLabel lblDataReserva = new JLabel("Data da Reserva:");
+		lblDataReserva.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblDataReserva.setBounds(10, 48, 120, 14);
+		panelDadosReserva.add(lblDataReserva);
+		
+		JLabel lblDataExpiracao = new JLabel("Data de Expira\u00E7\u00E3o:");
+		lblDataExpiracao.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblDataExpiracao.setBounds(10, 75, 135, 14);
+		panelDadosReserva.add(lblDataExpiracao);
+		
+		textIdReserva = new JTextField();
+		textIdReserva.setEnabled(false);
+		textIdReserva.setColumns(10);
+		textIdReserva.setBounds(130, 17, 158, 20);
+		panelDadosReserva.add(textIdReserva);
+		
+		textDataReserva = new JTextField();
+		textDataReserva.setEnabled(false);
+		textDataReserva.setColumns(10);
+		textDataReserva.setBounds(130, 45, 158, 20);
+		panelDadosReserva.add(textDataReserva);
+		
+		textDataExpiracao = new JTextField();
+		textDataExpiracao.setEnabled(false);
+		textDataExpiracao.setColumns(10);
+		textDataExpiracao.setBounds(130, 72, 158, 20);
+		panelDadosReserva.add(textDataExpiracao);
+		
 		JPanel panelDadosAluno = new JPanel();
 		panelDadosAluno.setBorder(new LineBorder(new Color(0, 0, 0)));
 		tabbedPane.addTab("Dados do Aluno", null, panelDadosAluno, null);
@@ -120,12 +169,12 @@ public class ReservaLivro extends JInternalFrame {
 		
 		JLabel lblNomeAluno = new JLabel("Nome do aluno:");
 		lblNomeAluno.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNomeAluno.setBounds(10, 51, 91, 14);
+		lblNomeAluno.setBounds(10, 48, 91, 14);
 		panelDadosAluno.add(lblNomeAluno);
 		
 		JLabel txtEmprestimos = new JLabel("Possui empr\u00E9stimos?");
 		txtEmprestimos.setFont(new Font("Tahoma", Font.BOLD, 11));
-		txtEmprestimos.setBounds(10, 75, 278, 14);
+		txtEmprestimos.setBounds(10, 75, 133, 14);
 		panelDadosAluno.add(txtEmprestimos);
 		
 		textCpf = new JTextField();
@@ -156,6 +205,15 @@ public class ReservaLivro extends JInternalFrame {
 		panelDadosAluno.add(textCpf);
 		
 		textNome = new JTextField();
+		textNome.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+					String nome = textNome.getText();
+					List<Usuario> usuario = usuarioControle.buscarPorNome(nome);
+				}
+			}
+		});
 		textNome.setColumns(10);
 		textNome.setBounds(106, 45, 182, 20);
 		panelDadosAluno.add(textNome);
@@ -166,7 +224,7 @@ public class ReservaLivro extends JInternalFrame {
 		panelDadosAluno.add(textEmprestimos);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 100, 378, 116);
+		scrollPane.setBounds(10, 100, 378, 105);
 		panelDadosAluno.add(scrollPane);
 		
 		table = new JTable();
@@ -186,7 +244,7 @@ public class ReservaLivro extends JInternalFrame {
 		panelDadosLivro.setLayout(null);
 		panelDadosLivro.setToolTipText("");
 		panelDadosLivro.setBorder(new LineBorder(new Color(0, 0, 0)));
-		tabbedPane.addTab("Dados Livro", null, panelDadosLivro, null);
+		tabbedPane.addTab("Dados do Livro", null, panelDadosLivro, null);
 		
 		textTitulo = new JTextField();
 		textTitulo.setColumns(10);
@@ -245,29 +303,26 @@ public class ReservaLivro extends JInternalFrame {
 		));
 		scrollPane_1.setViewportView(table_1);
 		
-		JButton btnInserir = new JButton("Novo");
+		btnInserir = new JButton("Novo");
 		btnInserir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				/*definirEstadoEdicao();
-				limparCampos();*/
-				textTitulo.requestFocus();
+			public void actionPerformed(ActionEvent e) {				
+				definirEstadoEdicao();
+				limparCampos();
 			}
 		});
 		btnInserir.setBounds(423, 99, 105, 23);
 		getContentPane().add(btnInserir);
 		
-		JButton btnAlterar = new JButton("Alterar");
+		btnAlterar = new JButton("Alterar");
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				definirEstadoEdicao();
-				textTitulo.requestFocus();
 			}
 		});
 		btnAlterar.setBounds(423, 130, 105, 23);
 		getContentPane().add(btnAlterar);
 		
-		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir = new JButton("Excluir");
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (objeto !=null) {
@@ -283,21 +338,46 @@ public class ReservaLivro extends JInternalFrame {
 		btnExcluir.setBounds(423, 164, 105, 23);
 		getContentPane().add(btnExcluir);
 		
-		JButton btnConsultar = new JButton("Consultar");
+		btnConsultar = new JButton("Consultar");
 		btnConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				Integer valor = Integer.parseInt(textIdReserva.getText());
+				objeto = controle.buscarPorId(valor);
+				String id = JOptionPane.showInputDialog("Digite o id da reserva: ");
+				objeto = controle.buscarPorId(Integer.parseInt(id));
+				if (objeto != null) {
+					textIdReserva.setText(String.valueOf(objeto.getCodReserva()));
+					textDataReserva.setText(String.valueOf(objeto.getDataReserva()));
+					textDataExpiracao.setText(String.valueOf(objeto.getDataExpiracao()));
+				}else {
+					JOptionPane.showMessageDialog(null, "Não existe a reserva com o código digitado");
+					textIdReserva.setText("");
+				}
 			}
 		});
 		btnConsultar.setBounds(423, 193, 105, 23);
 		getContentPane().add(btnConsultar);
 		
-		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar = new JButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
+				// nova reserva
+				if (objeto == null) {
+					objeto = new Reserva(); 
+					textIdReserva.setText(String.valueOf(objeto.getCodReserva()));
+					textDataReserva.setText(String.valueOf(objeto.getDataReserva()));
+					textDataExpiracao.setText(String.valueOf(objeto.getDataExpiracao()));
+					controle.inserir(objeto);
+					JOptionPane.showMessageDialog(btnSalvar, "Reserva cadastrada com sucesso.");
+				// alterar reserva	
+				}else{
+					textDataReserva.setText(String.valueOf(objeto.getDataReserva()));
+					textDataExpiracao.setText(String.valueOf(objeto.getDataExpiracao()));
+					controle.alterar(objeto);
+					JOptionPane.showMessageDialog(btnSalvar, "Reserva atualizada.");
+				}
+				definirEstadoConsulta();
+			}});
 		btnSalvar.setBounds(222, 297, 105, 23);
 		getContentPane().add(btnSalvar);
 		
@@ -318,9 +398,7 @@ public class ReservaLivro extends JInternalFrame {
 			}
 		});
 		btnFechar.setBounds(423, 224, 105, 23);
-		getContentPane().add(btnFechar);
-		
-		
+		getContentPane().add(btnFechar);	
 
 	}
 
@@ -331,7 +409,9 @@ public class ReservaLivro extends JInternalFrame {
 		btnAlterar.setEnabled(false);
 		btnConsultar.setEnabled(true);
 		btnSalvar.setEnabled(false);
-	
+		
+		textDataExpiracao.setEnabled(false);
+		textDataReserva.setEnabled(false);
 		textTitulo.setEnabled(false);
 		textAutor.setEnabled(false);
 		textEditora.setEnabled(false);
@@ -341,6 +421,8 @@ public class ReservaLivro extends JInternalFrame {
 	}
 	
 	private void definirEstadoEdicao() {
+		textDataExpiracao.setEnabled(true);
+		textDataReserva.setEnabled(true);
 		textTitulo.setEnabled(true);
 		textAutor.setEnabled(true);
 		textEditora.setEnabled(true);
@@ -355,7 +437,25 @@ public class ReservaLivro extends JInternalFrame {
 		btnSalvar.setEnabled(true);
 	}
 	
+	private void definirEstadoConsulta() {
+		textDataExpiracao.setEnabled(false);
+		textDataReserva.setEnabled(false);
+		textTitulo.setEnabled(false);
+		textEditora.setEnabled(false);
+		textAutor.setEnabled(false);
+		textIsbn.setEnabled(false);
+		
+		btnInserir.setEnabled(true);
+		btnExcluir.setEnabled(true);
+		btnAlterar.setEnabled(true);
+		btnConsultar.setEnabled(true);
+		btnSalvar.setEnabled(false);
+		
+	}
+	
 	private void limparCampos() {
+		textDataExpiracao.setText("");
+		textDataReserva.setText("");
 		textTitulo.setText("");
 		textAutor.setText("");
 		textEditora.setText("");
