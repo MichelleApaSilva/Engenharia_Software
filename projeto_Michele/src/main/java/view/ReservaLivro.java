@@ -26,8 +26,11 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
+import control.LivroControle;
 import control.ReservaControle;
 import control.UsuarioControle;
+import model.Livro;
 import model.Reserva;
 import model.Usuario;
 import java.util.List;
@@ -36,9 +39,11 @@ import java.util.List;
 public class ReservaLivro extends JInternalFrame {
 	// atributos do projeto
 	private Reserva objeto;
+	private Livro livro;
 	private Usuario usuario;
 	// ou colocar no construtor
 	private ReservaControle controle = new ReservaControle();
+	private LivroControle livroControle = new LivroControle();
 	private UsuarioControle usuarioControle = new UsuarioControle(); 
 	
 	private JTextField textCpf;
@@ -60,7 +65,7 @@ public class ReservaLivro extends JInternalFrame {
 	private JButton btnConsultar;
 	private JButton btnSalvar;
 	private JTextField textIdUsuario;
-	private JTextField textIdLivro;
+	private JTextField textCodExemplar;
 
 	/**
 	 * Launch the application.
@@ -165,16 +170,16 @@ public class ReservaLivro extends JInternalFrame {
         textIdUsuario.setBounds(130, 48, 158, 20);
         panelDadosReserva.add(textIdUsuario);
             
-        textIdLivro = new JTextField();
-        textIdLivro.setText((String) null);
-        textIdLivro.setColumns(10);
-        textIdLivro.setBounds(130, 75, 158, 20);
-        panelDadosReserva.add(textIdLivro);
+        textCodExemplar = new JTextField();
+        textCodExemplar.setText((String) null);
+        textCodExemplar.setColumns(10);
+        textCodExemplar.setBounds(130, 75, 158, 20);
+        panelDadosReserva.add(textCodExemplar);
             
-        JLabel lblIdLivro = new JLabel("ID Livro:");
-        lblIdLivro.setFont(new Font("Tahoma", Font.BOLD, 11));
-        lblIdLivro.setBounds(10, 78, 135, 14);
-        panelDadosReserva.add(lblIdLivro);
+        JLabel lblCodExemplar = new JLabel("C\u00F3digo Exemplar:");
+        lblCodExemplar.setFont(new Font("Tahoma", Font.BOLD, 11));
+        lblCodExemplar.setBounds(10, 78, 135, 14);
+        panelDadosReserva.add(lblCodExemplar);
         
         
 		JPanel panelDadosAluno = new JPanel();
@@ -368,7 +373,7 @@ public class ReservaLivro extends JInternalFrame {
 				objeto = controle.buscarPorId(Integer.parseInt(id));
 				if (objeto != null) {
 					textIdReserva.setText(String.valueOf(objeto.getCodReserva()));
-					textIdLivro.setText(String.valueOf(objeto.getCod_Livro()));
+					textCodExemplar.setText(String.valueOf(objeto.getCod_Livro()));
 					textIdUsuario.setText(String.valueOf(objeto.getIdUsuario()));
 					textDataReserva.setText(String.valueOf(objeto.getDataReserva()));
 					textDataExpiracao.setText(String.valueOf(objeto.getDataExpiracao()));
@@ -389,7 +394,7 @@ public class ReservaLivro extends JInternalFrame {
 					objeto = new Reserva(); 
 					textIdReserva.setText(String.valueOf(objeto.getCodReserva()));
 					//textDataReserva.setText(String.valueOf(objeto.getDataReserva()));
-					textIdLivro.setText(String.valueOf(objeto.getCod_Livro()));
+					textCodExemplar.setText(String.valueOf(objeto.getCod_Livro()));
 					textIdUsuario.setText(String.valueOf(objeto.getIdUsuario()));
 					textDataReserva.setText(objeto.getDataReserva());
 					//textDataReserva.setText(String.valueOf(objeto.getDataReserva()));
@@ -400,7 +405,7 @@ public class ReservaLivro extends JInternalFrame {
 					textDataReserva.setText(objeto.getDataReserva());
 					//textDataReserva.setText(String.valueOf(objeto.getDataReserva()));
 					textDataExpiracao.setText(String.valueOf(objeto.getDataExpiracao()));
-					textIdLivro.setText(String.valueOf(objeto.getCod_Livro()));
+					textCodExemplar.setText(String.valueOf(objeto.getCod_Livro()));
 					textIdUsuario.setText(String.valueOf(objeto.getIdUsuario()));
 					controle.alterar(objeto);
 					JOptionPane.showMessageDialog(btnSalvar, "Reserva atualizada.");
