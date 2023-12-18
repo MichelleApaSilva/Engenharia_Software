@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,10 +21,12 @@ public class Reserva implements Serializable{
 	private Integer codReserva;
 	private Integer cod_Livro;
 	private Integer idUsuario;
-	private Date dataReserva;
-	private Date dataExpiracao;
+	private String dataReserva = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+//	private Date dataReserva;
+	private String dataExpiracao = LocalDateTime.now().plusDays(5).format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+	//private Date dataExpiracao;
 	
-	public Reserva(Integer codReserva, Date dataReserva, Date dataExpiracao, Integer idUsuario) {
+	public Reserva(Integer codReserva, String dataReserva, String dataExpiracao, Integer idUsuario) {
 		super();
 		this.codReserva = codReserva;
 		this.cod_Livro = cod_Livro;
@@ -57,19 +61,19 @@ public class Reserva implements Serializable{
 		this.idUsuario = idUsuario;
 	}
 	
-	public Date getDataReserva() {
+	public String getDataReserva() {
 		return dataReserva;
 	}
 
-	public void setDataReserva(Date dataReserva) {
+	public void setDataReserva(String dataReserva) {
 		this.dataReserva = dataReserva;
 	}
 
-	public Date getDataExpiracao() {
+	public String getDataExpiracao() {
 		return dataExpiracao;
 	}
 
-	public void setDataExpiracao(Date dataExpiracao) {
+	public void setDataExpiracao(String dataExpiracao) {
 		this.dataExpiracao = dataExpiracao;
 	}
 
