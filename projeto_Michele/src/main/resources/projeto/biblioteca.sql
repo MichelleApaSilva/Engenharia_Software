@@ -119,10 +119,12 @@ FOREIGN KEY(idEmprestimo) REFERENCES Emprestimo(idEmprestimo),
 FOREIGN KEY(cod_livro) REFERENCES Livro(cod_livro)
 );
 
-CREATE TABLE Reserva (
-codReserva INT PRIMARY KEY,
-dataReserva date,
-dataExpiracao date
+idUsuario int ,
+cod_livro int,
+dataReserva varchar(30),
+dataExpiracao varchar(30),
+FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario),
+FOREIGN KEY (cod_livro) REFERENCES Livro(cod_livro)
 );
 
 INSERT INTO Usuario(idUsuario, nome, email, cpf, endereco, telefone)
@@ -224,6 +226,6 @@ VALUES (1,1,10),
 (4,4,9),
 (5,5,2);
 
-INSERT INTO Reserva(codReserva, dataReserva, dataExpiracao)
-VALUES (1, "2022-01-01", "2022-05-01"),
-(2, "2022-15-02", "2022-20-02");
+INSERT INTO Reserva(idUsuario, cod_livro,dataReserva, dataExpiracao)
+VALUES (2, 5,"2022-01-01", "2022-05-01"),
+(5, 4,"2022-02-15", "2022-02-20");
