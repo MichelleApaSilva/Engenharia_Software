@@ -1,14 +1,19 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 // Autor : Ramiro
 
 @Entity
+@Table(name = "usuario")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -20,7 +25,10 @@ public class Usuario implements Serializable {
 	private String cpf;
 	private String endereco;
 	private String telefone;
-
+	
+	@OneToMany(mappedBy = "usuario")
+	private List<Reserva> reservas;
+	
 	public Usuario(Integer idUsuario, String nome, String email, String cpf, String endereco, String telefone) {
 		super();
 		this.idUsuario = idUsuario;

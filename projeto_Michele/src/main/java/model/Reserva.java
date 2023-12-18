@@ -3,21 +3,28 @@ package model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 
 //Autor : Maria Eduarda
 
 @Entity
+@Table(name = "reserva")
 public class Reserva implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "idRESERVA")
 	private Integer codReserva;
 	private Integer cod_Livro;
 	private Integer idUsuario;
@@ -25,8 +32,13 @@ public class Reserva implements Serializable{
 //	private Date dataReserva;
 	private String dataExpiracao = LocalDateTime.now().plusDays(5).format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
 	//private Date dataExpiracao;
+
+	@ManyToOne
+	@JoinColumn(name= "idUSUARIO")
+	private Usuario usuario;
 	
-	public Reserva(Integer codReserva, String dataReserva, String dataExpiracao, Integer idUsuario) {
+	
+	public Reserva(Integer codReserva, Integer cod_Livro,String dataReserva, String dataExpiracao, Integer idUsuario) {
 		super();
 		this.codReserva = codReserva;
 		this.cod_Livro = cod_Livro;

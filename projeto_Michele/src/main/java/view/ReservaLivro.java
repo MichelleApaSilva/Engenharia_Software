@@ -66,6 +66,7 @@ public class ReservaLivro extends JInternalFrame {
 	private JButton btnSalvar;
 	private JTextField textIdUsuario;
 	private JTextField textCodExemplar;
+	private JTextField textNumReservas;
 
 	/**
 	 * Launch the application.
@@ -180,6 +181,17 @@ public class ReservaLivro extends JInternalFrame {
         lblCodExemplar.setFont(new Font("Tahoma", Font.BOLD, 11));
         lblCodExemplar.setBounds(10, 78, 135, 14);
         panelDadosReserva.add(lblCodExemplar);
+        
+        JLabel lblNumReservas = new JLabel("N\u00FAmero de Reservas:");
+        lblNumReservas.setFont(new Font("Tahoma", Font.ITALIC, 11));
+        lblNumReservas.setBounds(10, 159, 135, 14);
+        panelDadosReserva.add(lblNumReservas);
+        
+        textNumReservas = new JTextField();
+        textNumReservas.setEnabled(false);
+        textNumReservas.setColumns(10);
+        textNumReservas.setBounds(130, 156, 158, 20);
+        panelDadosReserva.add(textNumReservas);
         
         
 		JPanel panelDadosAluno = new JPanel();
@@ -377,6 +389,9 @@ public class ReservaLivro extends JInternalFrame {
 					textIdUsuario.setText(String.valueOf(objeto.getIdUsuario()));
 					textDataReserva.setText(String.valueOf(objeto.getDataReserva()));
 					textDataExpiracao.setText(String.valueOf(objeto.getDataExpiracao()));
+					// relação está com erro
+					//textNumReservas.setText(String.valueOf(objeto.getReservas().size()));
+					
 				}else {
 					JOptionPane.showMessageDialog(null, "Não existe a reserva com o código digitado");
 					textIdReserva.setText("");

@@ -57,7 +57,7 @@ public class DadosCadastrais extends JInternalFrame {
 	public DadosCadastrais() {
 		setIconifiable(true);
 		setClosable(true);
-		setBounds(100, 100, 558, 344);
+		setBounds(100, 100, 558, 396);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
