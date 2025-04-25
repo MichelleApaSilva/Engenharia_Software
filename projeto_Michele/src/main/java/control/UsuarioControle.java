@@ -1,82 +1,80 @@
 package control;
 
-import java.util.List;
 import model.Usuario;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
-//Autor : Ramiro
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class UsuarioControle {
-	private EntityManager em;
-	
-	public UsuarioControle() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projeto");
-			em = emf.createEntityManager();
-	}
-	
-	public void inserir(Usuario objeto) {
-        try {
-            em.getTransaction().begin();
-            em.persist(objeto);
-            em.getTransaction().commit();
-         } catch (Exception ex) {
-            ex.printStackTrace();
-            em.getTransaction().rollback();
-         }
-	}
-	
-	public void alterar(Usuario objeto) {
-        try {
-            em.getTransaction().begin();
-            em.merge(objeto);
-            em.getTransaction().commit();
-         } catch (Exception ex) {
-            ex.printStackTrace();
-            em.getTransaction().rollback();
-         }
-	}
-	
-	public void excluir(Usuario objeto) {
-        try {
-            em.getTransaction().begin();
-            em.remove(objeto);
-            em.getTransaction().commit();
-         } catch (Exception ex) {
-            ex.printStackTrace();
-            em.getTransaction().rollback();
-         }
-	}
-	
-	public void excluirPorId(Integer id) {
-        try {
-        	Usuario objeto = buscarPorId(id);
+    private EntityManager em;
+
+    public UsuarioControle() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("projeto");
+        em = emf.createEntityManager();
+    }
+
+    public void inserir(Usuario objeto) {
+        executarTransacao(em -> em.persist(objeto));
+    }
+
+    public void alterar(Usuario objeto) {
+        executarTransacao(em -> em.merge(objeto));
+    }
+
+    public void excluir(Usuario objeto) {
+        executarTransacao(em -> em.remove(objeto));
+    }
+
+    public void excluirPorId(Integer id) {
+        Usuario objeto = buscarPorId(id);
+        if (objeto != null) {
             excluir(objeto);
-         } catch (Exception ex) {
+        }
+    }
+
+    public Usuario buscarPorId(Integer id) {
+        return em.find(Usuario.class, id);
+    }
+
+    public List<Usuario> buscarTodos() {
+        return criarConsulta("FROM Usuario").getResultList();
+    }
+
+    public List<Usuario> buscarPorNome(String nome) {
+        return criarConsulta("FROM Usuario WHERE nome LIKE :nome", "nome", "%" + nome + "%").getResultList();
+    }
+
+    public List<Usuario> buscarPorCpf(String cpf) {
+        return criarConsulta("FROM Usuario WHERE cpf LIKE :cpf", "cpf", "%" + cpf + "%").getResultList();
+    }
+
+    // Método auxiliar para criar consultas com parâmetros
+    private TypedQuery<Usuario> criarConsulta(String jpql, String parametro, String valor) {
+        TypedQuery<Usuario> query = em.createQuery(jpql, Usuario.class);
+        if (parametro != null && valor != null) {
+            query.setParameter(parametro, valor);
+        }
+        return query;
+    }
+
+    // Método auxiliar para executar transações
+    private void executarTransacao(TransacaoExecutor executor) {
+        try {
+            em.getTransaction().begin();
+            executor.executar(em);
+            em.getTransaction().commit();
+        } catch (Exception ex) {
             ex.printStackTrace();
-         }
-	}
-	//
-	public Usuario buscarPorId(Integer id) {
-		return em.find(Usuario.class, id);
-	}
-	
-	public List<Usuario> buscarTodos() {
-		String nomeClasse = Usuario.class.getName();
-		return em.createQuery("FROM " + nomeClasse).getResultList();
-	}
+            em.getTransaction().rollback();
+        }
+    }
 
-	
-	public List<Usuario> buscarPorNome(String nome) {
-		String nomeClasse = Usuario.class.getName();
-		return em.createQuery("FROM " + nomeClasse + " WHERE nome LIKE '%" + nome + "%'").getResultList();
-	}
-		
-	public List<Usuario> buscarPorCpf(String cpf) {
-		String nomeClasse = Usuario.class.getName();
-		return em.createQuery("FROM " + nomeClasse + " WHERE cpf LIKE '%" + cpf + "%'").getResultList();
-	}
-
+    // Interface funcional para o Executor de transações
+    @FunctionalInterface
+    private interface TransacaoExecutor {
+        void executar(EntityManager em);
+    }
 }
